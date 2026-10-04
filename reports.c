@@ -13,7 +13,8 @@ void reportsMenu(void)
         printf("====================================\n");
         printf("1. Employee Report\n");
         printf("2. Budget Report\n");
-        printf("3. Back to Main Menu\n");
+        printf("3.Supplier Report\n");
+        printf("4. Back to Main Menu\n");
         printf("Enter your choice: ");
 
         if (scanf("%d", &choice) != 1)
@@ -36,8 +37,10 @@ void reportsMenu(void)
             case 2:
                 budgetReport();
                 break;
-
             case 3:
+                supplierReport();
+
+            case 4:
                 printf("Returning to main menu...\n");
                 break;
 
@@ -45,7 +48,7 @@ void reportsMenu(void)
                 printf("Invalid choice. Please try again.\n");
         }
 
-    } while (choice != 3);
+    } while (choice != 4);
 }
 
 
@@ -124,6 +127,40 @@ void budgetReport(void)
     else
     {
         printf("No departments have exceeded their budget.\n");
+    }
+
+    printf("====================================\n");
+}
+#include <stdio.h>
+#include "reports.h"
+#include "employees.h"
+#include "budget.h"
+#include "suppliers.h"
+void supplierReport(void)
+{
+    printf("\n====================================\n");
+    printf("          SUPPLIER REPORT\n");
+    printf("====================================\n");
+
+    if (supplierCount == 0)
+    {
+        printf("No supplier records available.\n");
+        return;
+    }
+
+    printf("Total Suppliers: %d\n", supplierCount);
+
+    printf("\n----------- SUPPLIER INFORMATION -----------\n");
+
+    for (int i = 0; i < supplierCount; i++)
+    {
+        printf("\nSupplier %d\n", i + 1);
+        printf("------------------------------------\n");
+        printf("Supplier ID: %s\n", suppliers[i].supplierID);
+        printf("Name:        %s\n", suppliers[i].supplierName);
+        printf("Email:       %s\n", suppliers[i].email);
+        printf("Telephone:   %s\n", suppliers[i].telephone);
+        printf("Town:        %s\n", suppliers[i].town);
     }
 
     printf("====================================\n");
