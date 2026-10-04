@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include "budget.h"
 
+Budget budgets[MAX_DEPARTMENT];
+int budgetCount = 0;
+
 /* Add departmental budget */
 void addBudget(Budget budgets[], int*count)
 {
@@ -101,6 +104,58 @@ void displayExceededBudgets(Budget budgets[], int count)
         printf("No departments have exceeeded their budget.\n");
     }
 }
+void budgetMenu(void)
+{
+    int choice;
 
+    do
+    {
+        printf("\n====================================\n");
+        printf("        BUDGET MANAGEMENT\n");
+        printf("====================================\n");
+        printf("1. Add Budget\n");
+        printf("2. Display Budgets\n");
+        printf("3. Calculate Budget\n");
+        printf("4. Display Exceeded Budgets\n");
+        printf("5. Back to Main Menu\n");
+        printf("Enter your choice: ");
+
+        if (scanf("%d", &choice) != 1)
+        {
+            printf("Invalid input. Please enter a number.\n");
+            while (getchar() != '\n');
+            continue;
+        }
+
+        while (getchar() != '\n');
+
+        switch (choice)
+        {
+            case 1:
+                addBudget(budgets, &budgetCount);
+                break;
+
+            case 2:
+                displayBudgets(budgets, budgetCount);
+                break;
+
+            case 3:
+                calculateBudget(budgets, budgetCount);
+                break;
+
+            case 4:
+                displayExceededBudgets(budgets, budgetCount);
+                break;
+
+            case 5:
+                printf("Returning to main menu...\n");
+                break;
+
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+
+    } while (choice != 5);
+}
 
     

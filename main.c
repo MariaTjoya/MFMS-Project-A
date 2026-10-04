@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include "reports.h"
+#include "budget.h"
 
 void displayMenu()
 {
@@ -34,9 +36,9 @@ int main()
                 break;
 
             case 2:
-                printf("\nBudget Management selected.\n");
+                 budgetMenu();
                 break;
-
+            
             case 3:
                 printf("\nSupplier Management selected.\n");
                 break;
@@ -46,8 +48,8 @@ int main()
                 break;
 
             case 5:
-                printf("\nReports selected.\n");
-                break;
+               reportsMenu();
+               break;
 
             case 0:
                 printf("\nExiting the system...\n");

@@ -9,8 +9,11 @@ typedef struct {
     double expenditure;
     double remainingBudget;} Budget;
 
+    void budgetMenu(void);
     void addBudget(Budget budget[],int *count);
     void displayBudgets(Budget budgets[], int count);
     void  calculateBudget(Budget budgets[], int count);
     void displayExceededBudgets(Budget budgets[], int count);
+    extern Budget budgets[MAX_DEPARTMENT];
+    extern int budgetCount;
     #endif
