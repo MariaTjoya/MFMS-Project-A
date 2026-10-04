@@ -2,6 +2,8 @@
 #include "reports.h"
 #include "employees.h"
 #include "budget.h"
+#include "suppliers.h"
+
 void reportsMenu(void)
 {
     int choice;
@@ -13,7 +15,7 @@ void reportsMenu(void)
         printf("====================================\n");
         printf("1. Employee Report\n");
         printf("2. Budget Report\n");
-        printf("3.Supplier Report\n");
+        printf("3. Supplier Report\n");
         printf("4. Back to Main Menu\n");
         printf("Enter your choice: ");
 
@@ -37,8 +39,10 @@ void reportsMenu(void)
             case 2:
                 budgetReport();
                 break;
+
             case 3:
                 supplierReport();
+                break;
 
             case 4:
                 printf("Returning to main menu...\n");
@@ -131,11 +135,8 @@ void budgetReport(void)
 
     printf("====================================\n");
 }
-#include <stdio.h>
-#include "reports.h"
-#include "employees.h"
-#include "budget.h"
-#include "suppliers.h"
+
+
 void supplierReport(void)
 {
     printf("\n====================================\n");
