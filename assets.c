@@ -1,7 +1,7 @@
-#include <stdio.h>
-#include "assets.h"
 
-#define MAX_ASSETS 100
+#include <stdio.h>
+#include <string.h>
+#include "assets.h"
 
 typedef struct {
     int id;
