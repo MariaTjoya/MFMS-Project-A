@@ -1,10 +1,13 @@
+
 #ifndef REPORTS_H
 #define REPORTS_H
 
-void reportsMenu(void);
+#include "suppliers.h"
+
+void reportsMenu(Supplier suppliers[], int supplierCount);
 void employeeReport(void);
 void budgetReport(void);
-void supplierReport(void);
+void supplierReport(Supplier suppliers[], int supplierCount);
 void assetReport(void);
 
 #endif

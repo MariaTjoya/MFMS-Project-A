@@ -1,62 +1,67 @@
+
 #include <stdio.h>
-#include "reports.h"
+#include "employees.h"
 #include "budget.h"
+#include "suppliers.h"
+#include "assets.h"
+#include "reports.h"
 
-void displayMenu()
-{
-    printf("\n");
-    printf("====================================\n");
-    printf("      MUNICIPAL FINANCIAL\n");
-    printf("      MANAGEMENT SYSTEM\n");
-    printf("========== MAIN MENU ===============\n");
-    printf("1. Employee Management\n");
-    printf("2. Budget Management\n");
-    printf("3. Supplier Management\n");
-    printf("4. Asset Management\n");
-    printf("5. Reports\n");
-    printf("0. Exit\n");
-    printf("====================================\n");
-    printf("Enter your choice: ");
-}
-
-int main()
+int main(void)
 {
     int choice;
 
-    do
-    {
-        displayMenu();
+    Supplier suppliers[MAX_SUPPLIERS] = {0};
+    int supplierCount = 0;
 
-        scanf("%d", &choice);
+    do {
+        printf("\n====================================\n");
+        printf(" MUNICIPAL FINANCIAL MANAGEMENT SYSTEM\n");
+        printf("============= MAIN MENU =============\n");
+        printf("1. Employee Management\n");
+        printf("2. Budget Management\n");
+        printf("3. Supplier Management\n");
+        printf("4. Asset Management\n");
+        printf("5. Reports\n");
+        printf("0. Exit\n");
+        printf("====================================\n");
+        printf("Enter your choice: ");
 
-        switch (choice)
-        {
+        if (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Enter a number.\n");
+
+            while (getchar() != '\n');
+
+            choice = -1;
+            continue;
+        }
+
+        switch (choice) {
             case 1:
-                printf("\nEmployee Management selected.\n");
+                employeeMenu();
                 break;
 
             case 2:
-                 budgetMenu();
+                budgetMenu();
                 break;
-            
+
             case 3:
-                printf("\nSupplier Management selected.\n");
+                supplierMenu(suppliers, &supplierCount);
                 break;
 
             case 4:
-                printf("\nAsset Management selected.\n");
+                assetMenu();
                 break;
 
             case 5:
-               reportsMenu();
-               break;
+                reportsMenu(suppliers, supplierCount);
+                break;
 
             case 0:
-                printf("\nExiting the system...\n");
+                printf("Exiting MFMS. Goodbye!\n");
                 break;
 
             default:
-                printf("\nInvalid choice. Please try again.\n");
+                printf("Invalid choice. Try again.\n");
         }
 
     } while (choice != 0);
